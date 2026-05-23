@@ -1,0 +1,23 @@
+name: Robot Ceagesp AppGestor
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rodar-extrator:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Baixar codigo do repositorio
+      uses: actions/checkout@v3
+
+    - name: Configurar o Python no Servidor
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Instalar dependencias
+      run: |
+        pip install selenium firebase-admin
+
+    - name: Executar Robo de Cogumelos
+      run: python CotacaoRobo.py
